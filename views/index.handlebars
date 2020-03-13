@@ -34,10 +34,11 @@
 
 $(".eatbg").on("click", function(event) {
     event.preventDefault();
-    const id = $(this).data("bgid");
+    let id = $(this).data("bgid");
 
     $.ajax("/api/burgers/" + id, {
-        type: "PUT"
+        type: "PUT",
+        data: id
     }).then(function() {
         console.log("Ate burger id " + id);
         location.reload();

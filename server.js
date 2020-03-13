@@ -47,8 +47,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/api/burgers", (req, res) => {
-    // console.log(req);
-    connection.query("INSERT INTO burgers (bg_name, eaten) VALUES (?)", [req.body.burger, false],
+    connection.query("INSERT INTO burgers (bg_name, eaten) VALUES (?,?)", [req.body.burger, false],
     (err, result) => {
         if (err) {
             return res.status(500).end();
