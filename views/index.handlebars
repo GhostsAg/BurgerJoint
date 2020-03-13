@@ -5,7 +5,7 @@
         <li>
             <p>
                 {{this.bg_name}}
-                <button data-bgid="{{this.id}}" data-bgname="{{this.bg_name}}" class="delbg">EAT BURGER!</button>
+                <button data-bgid="{{this.id}}" data-bgname="{{this.bg_name}}" class="eatbg">EAT BURGER!</button>
             </p>
         </li>
         {{/each}}
@@ -32,7 +32,8 @@
 
 <script type="text/javascript">
 
-$(".delbg").on("click", function(event) {
+$(".eatbg").on("click", function(event) {
+    event.preventDefault();
     const id = $(this).data("bgid");
 
     $.ajax("/api/burgers/" + id, {

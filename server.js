@@ -47,26 +47,26 @@ app.get("/", (req, res) => {
 });
 
 app.post("/api/burgers", (req, res) => {
+    // console.log(req);
     connection.query("INSERT INTO burgers (bg_name, eaten) VALUES (?)", [req.body.burger, false],
     (err, result) => {
         if (err) {
             return res.status(500).end();
         }
-        console.log(res);
+        console.log(result);
 
-        res.json( {id: result.insertId });
+        res.json({ id: result.insertId });
         console.log({ id: result.insertId });
     });
 });
 
 app.put("/api/burgers/:id", (req, res) => {
-    connection.query("UPDATE burgers SET eaten = ? WHERE id = ?", [true, req.body.burger], 
+    connection.query("UPDATE burgers SET eaten = ? WHERE id = ?", [true, req.params.id], 
     (err, result) => {
         if (err) {
             return res.status(500).end();
-        }else if (result.changedRows === 0) {
-            return res.status(404).end();
         }
+
         res.status(200).end();
     });
 });
