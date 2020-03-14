@@ -7,12 +7,7 @@ router.get("/", (req, res) => {
     Burger.all( (data) => {
         let good = data.filter( (el) => el.eaten === false);
         let eaten = data.filter( (el) => el.eaten === true);
-        const hbsObject = {
-            good: good,
-            eaten: eaten
-        };
-        console.log("good:", good);
-        res.render("index", hbsObject);
+        res.render("index", { good: good, eaten: eaten });
     });
 });
 
