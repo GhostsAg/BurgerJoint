@@ -1,8 +1,6 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
-const connection = require("./config/connection");
-
-require("dotenv").config(); 
+const routes = require("./controllers/burger_controller");
 
 var app = express();
 
@@ -15,17 +13,7 @@ app.use(express.static("public"));
 app.engine("handlebars", exphbs({ defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
-app.get("/", (req, res) => {
-    
-});
-
-app.post("/api/burgers", (req, res) => {
-    
-});
-
-app.put("/api/burgers/:id", (req, res) => {
-    
-});
+app.use(routes);
 
 app.listen(PORT, () => {
     console.log(`Server listening on: http://localhost:${PORT}`);

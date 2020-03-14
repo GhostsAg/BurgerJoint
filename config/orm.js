@@ -18,7 +18,7 @@ const orm = {
     },
     insertOne: function(table, columns, values, cb) {
         const queyString = `INSERT INTO ${table} (${columns}) VALUES (${toQuests(values.length)})`;
-        connection.query(queyString, vals, (err, res) => {
+        connection.query(queyString, values, (err, res) => {
             if (err) throw err;
             cb(res);
         });
