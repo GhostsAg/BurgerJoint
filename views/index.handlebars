@@ -1,33 +1,37 @@
-<div id="left" class="container">
-    <h1>EAT AWAY!!</h1>
-    <ul>
-        {{#each good}}
-        <li>
-            <p>
-                {{this.bg_name}}
-                <button data-bgid="{{this.id}}" data-bgname="{{this.bg_name}}" class="eatbg">EAT BURGER!</button>
-            </p>
-        </li>
-        {{/each}}
-    </ul>
+<div class="container row">
+    <div id="left" class="col s6">
+        <h3 class="subs">EAT AWAY!!</h1>
+        <ul>
+            {{#each good}}
+            <li>
+                <p>
+                    {{this.bg_name}}
+                    <button data-bgid="{{this.id}}" data-bgname="{{this.bg_name}}" class="eatbg">EAT BURGER!</button>
+                </p>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    <div id="right" class="col s6">
+        <h3 class="subs">YOU EAT ALL OF THIS! 0_o</h2>
+        <ul>
+            {{#each eaten}}
+            <li>
+                <p>
+                    {{this.bg_name}}
+                </p>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
 </div>
-<div id="right" class="container">
-    <h2>YOU EAT ALL OF THIS! 0_o</h2>
-    <ul>
-        {{#each eaten}}
-        <li>
-            <p>
-                {{this.bg_name}}
-            </p>
-        </li>
-        {{/each}}
-    </ul>
+<div class="row">
+<h3 id="yell" class="col s4">MAKE A BURGER!</h2>
+<img src="/assets/img/bgIcon.png">
 </div>
-
-<h2>MAKE A BURGER!</h2>
 <form id="makebg" class="button-size">
-    <textarea type="text" name="burger"></textarea>
-    <button type="submit">Ready!</button>
+    <textarea type="text" name="burger" placeholder="NOOM NOOOM"></textarea>
+    <button id="submitBtn" type="submit">Ready!</button>
 </form>
 
 <script type="text/javascript">
