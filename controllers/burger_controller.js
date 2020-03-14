@@ -5,9 +5,13 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
     Burger.all( (data) => {
+        let good = data.filter( (el) => el.eaten === false);
+        let eaten = data.filter( (el) => el.eaten === true);
         const hbsObject = {
-            burgers: data
+            good: good,
+            eaten: eaten
         };
+        console.log("good:", good);
         res.render("index", hbsObject);
     });
 });
