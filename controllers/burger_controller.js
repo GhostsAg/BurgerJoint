@@ -5,17 +5,18 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
     Burger.all( (data) => {
-        let good = data.filter( (el) => el.eaten === false);
-        let eaten = data.filter( (el) => el.eaten === true);
+        let good = data.filter( (el) => el.eaten === 0);
+        let eaten = data.filter( (el) => el.eaten === 1);
         res.render("index", { good: good, eaten: eaten });
     });
 });
 
 router.post("/api/burgers", (req, res) => {
+    console.log(req.body);
     Burger.insert([
-        "bg_name", "eaten"
+        "bg_name"
     ], [
-        req.body.bg_name, req.body.eaten
+        req.body.burger
     ], function(result) {
         res.json({ id: result.insertId });
     });
